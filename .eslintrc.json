@@ -1,3 +1,79 @@
 {
-  "extends": "next/core-web-vitals"
+  "$schema": "http://json.schemastore.org/eslintrc",
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "max-len": ["error", 120],
+    "no-console": "error",
+    "camelcase": "error",
+    "react/jsx-indent-props": ["warn", 2]
+  },
+  "ignorePatterns": ["node_modules", "**/*.js"],
+  "import/order": [
+    "warn",
+    {
+      "newlines-between": "never",
+      "groups": ["builtin", "external", "internal"],
+      "pathGroups": [
+        {
+          "pattern": "react",
+          "group": "external",
+          "position": "before"
+        },
+        {
+          "pattern": "next",
+          "group": "external",
+          "position": "before"
+        },
+        {
+          "pattern": "next/**",
+          "group": "external",
+          "position": "before"
+        },
+        {
+          "pattern": "@material-ui",
+          "group": "external",
+          "position": "before"
+        },
+        {
+          "pattern": "~/**",
+          "group": "external",
+          "position": "before"
+        },
+        {
+          "pattern": "@src/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "@pages/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "@layouts/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "@components/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "@assets/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "~/styles/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "~/*.css",
+          "group": "internal",
+          "position": "after"
+        }
+      ],
+      "pathGroupsExcludedImportTypes": ["react"],
+      "alphabetize": {
+        "order": "asc",
+        "caseInsensitive": true
+      }
+    }
+  ]
 }

@@ -5,7 +5,8 @@
     "max-len": ["error", 120],
     "no-console": "error",
     "camelcase": "error",
-    "react/jsx-indent-props": ["warn", 2]
+    "react/jsx-indent-props": ["warn", 2],
+    "react-hooks/exhaustive-deps": "warn"
   },
   "ignorePatterns": ["node_modules", "**/*.js"],
   "import/order": [

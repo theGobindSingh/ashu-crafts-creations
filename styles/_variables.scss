@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --header-height: 12vh;
+  --common-border: 3px solid black;
+  --logo-font: "Megrim", cursive, sans-serif;
+  --header-font: "Amatic SC", cursive;
+  --header-lsbtn-font: "Courgette", cursive;
+  --about-sign-font: "Sacramento", cursive;
+  --primary-font: "Poppins", sans-serif;
+  --secondary-colour: #d76700;
+  --primary-colour: #212121;
+  --tertiary-colour: #333332;
+  --quaternary-colour: #4d4c4c;
+}

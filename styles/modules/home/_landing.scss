@@ -1,0 +1,53 @@
+#landing {
+  height: 100%;
+  width: 70%;
+  .hero-title {
+    font-weight: 600;
+    text-align: center;
+    font-size: 3.2rem;
+    padding: 1.5% 0;
+    border-bottom: var(--common-border);
+  }
+  .hero-brief {
+    margin: 10% 10%;
+    display: flex;
+    padding-left: 5%;
+    border-left: var(--common-border);
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+      font-size: 5rem;
+      margin-bottom: 4%;
+    }
+    h2 {
+      font-size: 3.4rem;
+      &::first-letter {
+        font-size: 4rem;
+      }
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    height: 55%;
+    width: 100%;
+    border-bottom: var(--common-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .hero-title {
+      font-size: 2rem;
+      border: none;
+      margin: 0 5%;
+    }
+    .hero-brief {
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2.1rem;
+        &::first-letter {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}

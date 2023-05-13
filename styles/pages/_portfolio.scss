@@ -1,0 +1,11 @@
+#portfolio {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  display: flex;
+  background-color: var(--primary-colour);
+  @import "../modules/portfolio/portfolio-options";
+  @import "../modules/portfolio/portfolio-gallery";
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+}

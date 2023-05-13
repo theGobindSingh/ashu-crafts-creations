@@ -1,0 +1,137 @@
+#header-container {
+  border-bottom: var(--common-border);
+  height: var(--header-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 4vw;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 5;
+  &:hover {
+    backdrop-filter: blur(10px);
+  }
+  &.with-bg {
+    background-color: var(--primary-colour);
+    color: white;
+    button {
+      color: var(--secondary-colour);
+    }
+    .logo {
+      background: linear-gradient(to right, white, var(--secondary-colour));
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+  }
+  .logo {
+    font-family: var(--logo-font);
+    font-size: 2.1rem;
+    font-weight: 700;
+  }
+  nav {
+    margin: auto;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    a {
+      margin: 0 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+  }
+  .login {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: none;
+    border: none;
+  }
+  .burger {
+    display: none;
+  }
+  @media only screen and (max-width: 900px) {
+    padding: 0 5vw;
+    justify-content: space-between;
+    &:hover {
+      backdrop-filter: none;
+    }
+    .logo {
+      font-size: 2rem;
+    }
+    nav {
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(50px);
+      transition: all 0.3s ease;
+      justify-content: space-evenly;
+      align-items: center;
+      position: fixed;
+      height: 100vh;
+      width: 60vw;
+      top: 0;
+      &.inactive {
+        right: -60vw;
+      }
+      &.active {
+        right: 0;
+      }
+    }
+    .login {
+      display: none;
+    }
+    &.with-bg {
+      .burger {
+        .line {
+          background-color: white;
+        }
+      }
+    }
+    .burger {
+      height: 22.5px;
+      width: auto;
+      aspect-ratio: 1.25;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 5;
+      .line {
+        height: 3px;
+        align-self: flex-end;
+        border-radius: 5px;
+        background-color: var(--primary-colour);
+        transition: all 0.3s ease;
+      }
+      &.inactive {
+        .line {
+          &._1 {
+            width: 50%;
+          }
+          &._2 {
+            width: 100%;
+          }
+          &._3 {
+            width: 75%;
+          }
+        }
+      }
+      &.active {
+        .line {
+          &._1 {
+            width: 100%;
+            transform: rotateZ(45deg) translateY(3.5px) translateX(10px);
+          }
+          &._2 {
+            opacity: 0;
+            width: 0;
+          }
+          &._3 {
+            width: 100%;
+            transform: rotateZ(-45deg) translateY(-3.5px) translateX(10px);
+          }
+        }
+      }
+    }
+  }
+}

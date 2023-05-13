@@ -1,0 +1,15 @@
+#about {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+  @import "../modules/about/about-landing";
+  @import "../modules/about/about-testimonial";
+  @media only screen and (max-width: 900px) {
+    height: var(100vh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+  }
+}

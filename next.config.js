@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com"],
   },
+  sassOptions: {
+    compress: true,
+  },
 };
 
 module.exports = nextConfig;

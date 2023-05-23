@@ -1,11 +1,21 @@
 {
+  //npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript eslint-plugin-import eslint-import-resolver-typescript
   "$schema": "http://json.schemastore.org/eslintrc",
-  "extends": "next/core-web-vitals",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/warnings"
+  ],
   "rules": {
     "max-len": ["error", 120],
     "no-console": "error",
     "camelcase": "error",
-    "react/jsx-indent-props": ["warn", 2]
+    "react/jsx-indent-props": ["warn", 2],
+    "react-hooks/exhaustive-deps": "warn"
   },
   "ignorePatterns": ["node_modules", "**/*.js"],
   "import/order": [
@@ -68,12 +78,8 @@
           "group": "internal",
           "position": "after"
         }
-      ],
-      "pathGroupsExcludedImportTypes": ["react"],
-      "alphabetize": {
-        "order": "asc",
-        "caseInsensitive": true
       }
-    }
-  ]
+    ]
+  },
+  "ignorePatterns": ["node_modules", "**/*.js"]
 }

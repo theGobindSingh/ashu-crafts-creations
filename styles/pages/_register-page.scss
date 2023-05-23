@@ -1,0 +1,147 @@
+.registerpage {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  .register {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    img {
+      opacity: 0.5;
+      z-index: -2;
+      object-fit: cover;
+    }
+    .options {
+      display: flex;
+      width: 500px;
+      justify-content: center;
+      align-items: center;
+      height: 10%;
+      button {
+        font-size: 1.1rem;
+        width: 50%;
+        height: 100%;
+        border: none;
+        color: white;
+        background-color: var(--tertiary-colour);
+        border-bottom: var(--common-border);
+        // &:focus {
+        //   background-color: var(--quaternary-colour);
+        //   border: var(--common-border);
+        //   border-bottom: none;
+        // }
+      }
+      .act {
+        background-color: var(--quaternary-colour);
+        border: var(--common-border);
+        border-bottom: none;
+      }
+      position: relative;
+      a {
+        color: white;
+        svg {
+          position: absolute;
+          font-size: 1.5rem;
+          top: 8px;
+          right: 8px;
+        }
+      }
+    }
+    form {
+      height: 44%;
+      width: 500px;
+      background-color: var(--quaternary-colour);
+      color: white;
+      border: var(--common-border);
+      border-top: none;
+      button {
+        padding: 1%;
+        width: 300px;
+        border-radius: 3px;
+        margin: 3% 0;
+      }
+      span {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        --or-width: 4ch;
+        &::before {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: calc((100% - var(--or-width)) / 2);
+          background-color: black;
+          top: 50%;
+          left: 0;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: calc((100% - var(--or-width)) / 2);
+          background-color: black;
+          top: 50%;
+          right: 0;
+        }
+      }
+    }
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+      align-items: center;
+      input {
+        width: 400px;
+        margin-bottom: 5%;
+        border-radius: 3px;
+        text-align: center;
+        padding: 1%;
+      }
+      .check-stuff {
+        display: flex;
+        width: 400px;
+        justify-content: space-between;
+        .check-box {
+          width: 150px;
+          input {
+            width: fit-content;
+            margin-bottom: 20%;
+          }
+        }
+      }
+      button {
+        &:nth-of-type(2) {
+          display: flex;
+          justify-content: center;
+          svg {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+      align-items: center;
+      input {
+        width: 400px;
+        margin-bottom: 4.7%;
+        border-radius: 3px;
+        text-align: center;
+        padding: 1%;
+      }
+      button {
+        &:nth-of-type(2) {
+          display: flex;
+          justify-content: center;
+          svg {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

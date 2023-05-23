@@ -1,6 +1,6 @@
 .portfolio-gallery-container {
-  width: 75%;
-  height: 100%;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
   background-color: var(--primary-colour);
   display: flex;
   flex-direction: column;
@@ -9,7 +9,6 @@
   .gallery {
     width: 90%;
     height: 80%;
-    // position: relative;
     display: grid;
     grid-template-columns: 25% 8.333% 12.5% 8.333% 25% 8.333% 12.5%;
     grid-template-rows: 45% 10% 10% 35%;

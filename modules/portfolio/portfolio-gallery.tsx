@@ -1,45 +1,33 @@
 import Image from "next/image";
 
-export default function PortfolioGallery() {
+interface PortfolioGalleryProps {
+  images: {
+    src: string;
+    alt: string;
+  }[];
+  heading: string;
+  subText: string;
+}
+
+export default function PortfolioGallery({
+  images,
+  heading,
+  subText,
+}: PortfolioGalleryProps) {
   return (
     <div className="portfolio-gallery-container">
       <div className="gallery">
-        <div className="img-container _1">
-          <Image
-            src="/assets/images/kiss.png"
-            alt="gal-img-1"
-            fill
-            sizes="100%"
-          ></Image>
-        </div>
-        <div className="img-container _2">
-          <Image
-            src="/assets/images/kiss.png"
-            alt="gal-img-2"
-            fill
-            sizes="100%"
-          ></Image>
-        </div>
-        <div className="img-container _3">
-          <Image
-            src="/assets/images/kiss.png"
-            alt="gal-img-3"
-            fill
-            sizes="100%"
-          ></Image>
-        </div>
-        <div className="img-container _4">
-          <Image
-            src="/assets/images/kiss.png"
-            alt="gal-img-4"
-            fill
-            sizes="100%"
-          ></Image>
-        </div>
+        {images.map((img, ind) => {
+          return (
+            <div className={`img-container _${ind + 1}`} key={ind}>
+              <Image src={img.src} alt={img.alt} fill sizes="100%"></Image>
+            </div>
+          );
+        })}
       </div>
       <div className="gallery-text">
-        <p>Hand drawn dual portraits</p>
-        <h1>/ Models: Lovebirds</h1>
+        <p>{subText}</p>
+        <h1>{heading}</h1>
       </div>
     </div>
   );

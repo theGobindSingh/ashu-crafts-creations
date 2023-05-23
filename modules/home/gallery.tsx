@@ -6,7 +6,16 @@ import {
 } from "@mui/icons-material";
 import Slider from "@/components/slider";
 
-export default function Gallery() {
+export default function Gallery({
+  galleryData,
+}: {
+  galleryData: {
+    image: {
+      src: string;
+      alt: string;
+    };
+  }[];
+}) {
   const btn1 = useRef<HTMLDivElement>(null);
   const btn2 = useRef<HTMLDivElement>(null);
 
@@ -31,20 +40,18 @@ export default function Gallery() {
         nextBtnRef={btn2}
         prevBtnRef={btn1}
       >
-        {Array(8)
-          .fill({ src: "/assets/images/kiss.png", alt: "img" })
-          .map((imgProp, index) => {
-            return (
-              <div className="img-container" key={index}>
-                <Image
-                  src={imgProp.src}
-                  alt={imgProp.alt}
-                  fill
-                  sizes="100%"
-                ></Image>
-              </div>
-            );
-          })}
+        {galleryData.map((imgProp, index) => {
+          return (
+            <div className="img-container" key={index}>
+              <Image
+                src={imgProp.image.src}
+                alt={imgProp.image.alt}
+                fill
+                sizes="100%"
+              ></Image>
+            </div>
+          );
+        })}
       </Slider>
       <div className="arrow" ref={btn2}>
         <KeyboardDoubleArrowDown />

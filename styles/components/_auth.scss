@@ -1,0 +1,133 @@
+#auth-modal {
+  border: none;
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  background-color: var(--tertiary-colour);
+  margin: auto;
+  position: relative;
+  height: 50%;
+  button {
+    font-size: 1.1rem;
+    width: 50%;
+    height: 100%;
+    border: none;
+    color: white;
+    background-color: var(--tertiary-colour);
+  }
+  .closebtn {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    height: auto;
+    width: auto;
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+  }
+  .top-toggle {
+    height: 17%;
+    .activebtn {
+      border: var(--common-border);
+      border-bottom: none;
+      background-color: var(--quaternary-colour);
+    }
+    .passivebtn {
+      border-bottom: var(--common-border);
+    }
+  }
+  form {
+    height: 83%;
+    width: 500px;
+    background-color: var(--quaternary-colour);
+    color: white;
+    border: var(--common-border);
+    border-top: none;
+    button {
+      padding: 1%;
+      width: 300px;
+      border-radius: 3px;
+      margin: 3% 0;
+    }
+    span {
+      width: 100%;
+      text-align: center;
+      position: relative;
+      --or-width: 4ch;
+      &::before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: calc((100% - var(--or-width)) / 2);
+        background-color: black;
+        top: 50%;
+        left: 0;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: calc((100% - var(--or-width)) / 2);
+        background-color: black;
+        top: 50%;
+        right: 0;
+      }
+    }
+  }
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    input {
+      width: 400px;
+      margin-bottom: 5%;
+      border-radius: 3px;
+      text-align: center;
+      padding: 1%;
+    }
+    .check-stuff {
+      display: flex;
+      width: 400px;
+      justify-content: space-between;
+      .check-box {
+        width: 150px;
+        input {
+          width: fit-content;
+          margin-bottom: 20%;
+        }
+      }
+    }
+    button {
+      &:nth-of-type(2) {
+        display: flex;
+        justify-content: center;
+        svg {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    input {
+      width: 400px;
+      margin-bottom: 4.7%;
+      border-radius: 3px;
+      text-align: center;
+      padding: 1%;
+    }
+    button {
+      &:nth-of-type(2) {
+        display: flex;
+        justify-content: center;
+        svg {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

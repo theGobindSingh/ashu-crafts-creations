@@ -1,0 +1,20 @@
+#portfolio {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  display: flex;
+  background-color: var(--primary-colour);
+  @import "../modules/portfolio/portfolio-options";
+  .galleries-container-wrapper {
+    height: 100%;
+    width: 75%;
+    overflow: hidden;
+    .galleries-container {
+      transition: transform 0.5s ease;
+      width: 100%;
+      @import "../modules/portfolio/portfolio-gallery";
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+}

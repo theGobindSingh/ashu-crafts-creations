@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const authDialogRef = useRef<HTMLDialogElement>(null);
   return (
     <>
-      <Header authDialogRef={authDialogRef} />
+      <Header />
       <Component {...pageProps} />
       <Footer />
       <Remark />

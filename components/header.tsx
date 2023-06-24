@@ -53,9 +53,6 @@ export default function Header({
           Contact Us
         </Link>
       </nav>
-      {/* <button onClick={loginBtnHandler} className="login">
-        Login / Sign Up
-      </button> */}
       <div
         className={"burger " + (state ? "active" : "inactive")}
         onClick={clickHandler}

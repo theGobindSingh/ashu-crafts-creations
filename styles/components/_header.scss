@@ -3,7 +3,7 @@
   height: var(--header-height);
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 0 4vw;
   transition: all 0.3s ease;
@@ -29,24 +29,18 @@
     font-family: var(--logo-font);
     font-size: 2.1rem;
     font-weight: 700;
+    width: 200px;
   }
   nav {
     margin: auto;
-    width: 40%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     a {
       margin: 0 10px;
       font-size: 0.8rem;
       font-weight: 700;
     }
-  }
-  .login {
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 0.8rem;
-    font-weight: 700;
-    box-shadow: none;
-    border: none;
   }
   .burger {
     display: none;
@@ -77,9 +71,6 @@
       &.active {
         right: 0;
       }
-    }
-    .login {
-      display: none;
     }
     &.with-bg {
       .burger {

@@ -1,3 +1,4 @@
+import { phoneNumber } from "@/common-data";
 import Slider from "@/components/slider";
 import {
   KeyboardDoubleArrowDown,
@@ -16,9 +17,21 @@ const test = Array(4).fill({
   },
 });
 
-export default function AboutTestimonial() {
+interface TestData {
+  tdata: {
+    author: string;
+    feedback: string;
+    picture: {
+      url: string;
+    };
+  }[];
+}
+
+export default function AboutTestimonial({ tdata }: TestData) {
   const btn1 = useRef<any>(null);
   const btn2 = useRef<any>(null);
+
+  const message = "Hey, I would like to order a comission.";
 
   return (
     <div className="about-testimonial">
@@ -36,17 +49,17 @@ export default function AboutTestimonial() {
           nextBtnRef={btn2}
           prevBtnRef={btn1}
         >
-          {test.map((items, index) => {
+          {tdata.map((items, index) => {
             return (
               <div className="feedback" key={index}>
                 <div className="text-container">
-                  <p>{items.para}</p>
-                  <span>{items.writer}</span>
+                  <p>{items.feedback}</p>
+                  <span>{items.author}</span>
                 </div>
                 <div className="img-container">
                   <Image
-                    src={items.image.src}
-                    alt={items.image.alt}
+                    src={items.picture.url}
+                    alt={items.author + `photo`}
                     fill
                     sizes="100%"
                   />
@@ -57,7 +70,7 @@ export default function AboutTestimonial() {
         </Slider>
         <KeyboardDoubleArrowDown className="arrodown" ref={btn2} />
       </div>
-      <Link href="/about">Hire us</Link>
+      <Link href={`https://wa.me/${phoneNumber}?text=${message}`}>Hire us</Link>
     </div>
   );
 }

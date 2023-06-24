@@ -65,7 +65,7 @@ export default function Slider(props: PropsWithChildren<SliderProps>) {
       prevBtnRef.current.addEventListener("click", upClickHandler);
       nextBtnRef.current.addEventListener("click", downClickHandler);
     } catch {
-      console.log("Something went wrong with button refs");
+      alert("Something went wrong with button refs");
     }
     resizePartialLogic();
     window.addEventListener("resize", resizeLogic);
@@ -74,7 +74,9 @@ export default function Slider(props: PropsWithChildren<SliderProps>) {
       try {
         prevBtnRef.current.removeEventListener("click", upClickHandler);
         nextBtnRef.current.removeEventListener("click", downClickHandler);
-      } catch {}
+      } catch {
+        //
+      }
     };
   }, []);
 

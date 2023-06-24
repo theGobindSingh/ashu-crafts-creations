@@ -2,22 +2,31 @@ import { message, phoneNumber } from "@/common-data";
 import Slider from "@/components/slider";
 import { TestData } from "@/interface-file";
 import {
-  KeyboardDoubleArrowDown,
-  KeyboardDoubleArrowUp,
-} from "@mui/icons-material";
+  MdOutlineKeyboardDoubleArrowDown,
+  MdOutlineKeyboardDoubleArrowUp,
+} from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function AboutTestimonial({ tdata }: TestData) {
   const btn1 = useRef<any>(null);
   const btn2 = useRef<any>(null);
 
+  const aboutTestiRef = useRef<any>(null);
+
+  useEffect(() => {
+    const arrowUp = aboutTestiRef.current?.querySelector(".arroup");
+    const arrowDown = aboutTestiRef.current?.querySelector(".arrodown");
+    btn1.current = arrowUp;
+    btn2.current = arrowDown;
+  }, []);
+
   return (
-    <div className="about-testimonial">
+    <div className="about-testimonial" ref={aboutTestiRef}>
       <h2>/ People say</h2>
       <div className="feedback-section">
-        <KeyboardDoubleArrowUp className="arroup" ref={btn1} />
+        <MdOutlineKeyboardDoubleArrowUp className="arroup" />
         <Slider
           breakpoints={[
             {
@@ -48,7 +57,7 @@ export default function AboutTestimonial({ tdata }: TestData) {
             );
           })}
         </Slider>
-        <KeyboardDoubleArrowDown className="arrodown" ref={btn2} />
+        <MdOutlineKeyboardDoubleArrowDown className="arrodown" />
       </div>
       <Link href={`https://wa.me/${phoneNumber}?text=${message}`}>Hire us</Link>
     </div>

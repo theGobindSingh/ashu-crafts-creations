@@ -1,11 +1,7 @@
 import Link from "next/link";
-import React, { useState, RefObject } from "react";
+import React, { useState } from "react";
 
-export default function Header({
-  authDialogRef,
-}: {
-  authDialogRef: RefObject<HTMLDialogElement>;
-}) {
+export default function Header() {
   const [state, setState] = useState<boolean>(false);
   const toggleSetting = () => {
     setState(!state);
@@ -26,11 +22,6 @@ export default function Header({
     toggleSetting();
     document.removeEventListener("scroll", scrollEvent);
   }
-  const loginBtnHandler = () => {
-    if (authDialogRef?.current) {
-      authDialogRef.current.showModal();
-    }
-  };
   return (
     <header id="header-container">
       <Link href="/" className="logo">

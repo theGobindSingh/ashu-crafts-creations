@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useRef } from "react";
 import {
-  KeyboardDoubleArrowUp,
-  KeyboardDoubleArrowDown,
-} from "@mui/icons-material";
+  MdOutlineKeyboardDoubleArrowDown,
+  MdOutlineKeyboardDoubleArrowUp,
+} from "react-icons/md";
 import Slider from "@/components/slider";
 
 export default function Gallery({
@@ -22,7 +22,7 @@ export default function Gallery({
   return (
     <div className="gallery-container">
       <div className="arrow" ref={btn1}>
-        <KeyboardDoubleArrowUp />
+        <MdOutlineKeyboardDoubleArrowUp />
       </div>
       <Slider
         breakpoints={[
@@ -54,7 +54,7 @@ export default function Gallery({
         })}
       </Slider>
       <div className="arrow" ref={btn2}>
-        <KeyboardDoubleArrowDown />
+        <MdOutlineKeyboardDoubleArrowDown />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import gqlclient from "@/gql/client";
 import { aboutArtistItems, aboutTestimonialItems } from "@/gql/queries";
+import { AboutArtistProps } from "@/interface-file";
 import AboutLanding from "@/modules/about/about-landing";
 import AboutTestimonial from "@/modules/about/about-testimonial";
 import { GetStaticProps } from "next";
@@ -18,27 +19,6 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 6,
   };
 };
-
-interface AboutArtistProps {
-  selfdata: {
-    aboutUs: string;
-    data1: string;
-    dataNumber1: number;
-    data2: string;
-    dataNumber2: number;
-    data3: string;
-    dataNumber3: number;
-    data4: string;
-    dataNumber4: number;
-  };
-  testidata: {
-    author: string;
-    feedback: string;
-    picture: {
-      url: string;
-    };
-  }[];
-}
 
 export default function About({ selfdata, testidata }: AboutArtistProps) {
   useEffect(() => {

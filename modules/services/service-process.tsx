@@ -1,10 +1,4 @@
-interface Process {
-  pdata: {
-    step: number;
-    heading: string;
-    subHeading: string;
-  }[];
-}
+import { Process } from "@/interface-file";
 
 export default function ProcessComponent({ pdata }: Process) {
   const mapper = (data: Process["pdata"][0], index: number) => {

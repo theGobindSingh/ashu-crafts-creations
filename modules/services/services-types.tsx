@@ -1,17 +1,6 @@
 import { phoneNumber } from "@/common-data";
+import { Types } from "@/interface-file";
 import Link from "next/link";
-
-interface Types {
-  tdata: {
-    price: number;
-    step1: string;
-    step2: string;
-    step3: string;
-    step4: string;
-    title: string;
-    whatsappText: string;
-  }[];
-}
 
 export default function ServicesTypes({ tdata }: Types) {
   const message = tdata[0].whatsappText;

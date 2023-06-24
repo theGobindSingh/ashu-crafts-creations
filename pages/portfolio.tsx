@@ -1,5 +1,6 @@
 import gqlclient from "@/gql/client";
 import { categoryItems } from "@/gql/queries";
+import { PortfolioProps } from "@/interface-file";
 import PortfolioGallery from "@/modules/portfolio/portfolio-gallery";
 import PortfolioOptions from "@/modules/portfolio/portfolio-options";
 import { GetStaticProps } from "next";
@@ -12,22 +13,6 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 6,
   };
 };
-
-interface PortfolioProps {
-  data: {
-    title: string;
-    bannerImage: {
-      url: string;
-    };
-    heading: string;
-    subHeading: string;
-    galleryCollection: {
-      items: {
-        url: string;
-      }[];
-    };
-  }[];
-}
 
 export default function Portfolio({ data }: PortfolioProps) {
   useEffect(() => {

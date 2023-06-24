@@ -5,7 +5,7 @@ import Gallery from "@/modules/home/gallery";
 import Landing from "@/modules/home/landing";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import type { Document } from "@contentful/rich-text-types";
+import { HomePageProps } from "@/interface-file";
 
 export const getStaticProps: GetStaticProps = async () => {
   const homePageData: any = await gqlclient.request(homePageItems);
@@ -14,21 +14,6 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 6,
   };
 };
-
-interface HomePageProps {
-  data: {
-    heading: string;
-    subHeading: string;
-    tagline: {
-      json: Document;
-    };
-    carouselCollection: {
-      items: {
-        url: string;
-      }[];
-    };
-  }[];
-}
 
 export default function Home({ data }: HomePageProps) {
   return (
@@ -42,7 +27,7 @@ export default function Home({ data }: HomePageProps) {
       <Landing
         heading={data[0]?.heading ?? ""}
         subHeading={data[0]?.subHeading ?? ""}
-        tagline={data[0]?.tagline?.json as Document}
+        tagline={data[0]?.tagline?.json}
       />
       <Gallery
         galleryData={

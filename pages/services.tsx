@@ -1,5 +1,6 @@
 import gqlclient from "@/gql/client";
 import { aboutServiceProcessItems, aboutServiceTypeItems } from "@/gql/queries";
+import { ServiceTypes } from "@/interface-file";
 import ServiceProcess from "@/modules/services/service-process";
 import ServicesTypes from "@/modules/services/services-types";
 import { GetStaticProps } from "next";
@@ -20,23 +21,6 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 6,
   };
 };
-
-interface ServiceTypes {
-  typeData: {
-    price: number;
-    step1: string;
-    step2: string;
-    step3: string;
-    step4: string;
-    title: string;
-    whatsappText: string;
-  }[];
-  processData: {
-    step: number;
-    heading: string;
-    subHeading: string;
-  }[];
-}
 
 export default function Services({ typeData, processData }: ServiceTypes) {
   useEffect(() => {

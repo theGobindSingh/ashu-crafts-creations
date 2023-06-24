@@ -1,5 +1,6 @@
-import { phoneNumber } from "@/common-data";
+import { message, phoneNumber } from "@/common-data";
 import Slider from "@/components/slider";
+import { TestData } from "@/interface-file";
 import {
   KeyboardDoubleArrowDown,
   KeyboardDoubleArrowUp,
@@ -8,30 +9,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
-const test = Array(4).fill({
-  para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  writer: "William Dafoe",
-  image: {
-    src: "/assets/images/kiss.png",
-    alt: "feedback-image",
-  },
-});
-
-interface TestData {
-  tdata: {
-    author: string;
-    feedback: string;
-    picture: {
-      url: string;
-    };
-  }[];
-}
-
 export default function AboutTestimonial({ tdata }: TestData) {
   const btn1 = useRef<any>(null);
   const btn2 = useRef<any>(null);
-
-  const message = "Hey, I would like to order a comission.";
 
   return (
     <div className="about-testimonial">

@@ -1,18 +1,5 @@
+import { SelfData } from "@/interface-file";
 import Image from "next/image";
-
-interface SelfData {
-  sdata: {
-    aboutUs: string;
-    data1: string;
-    dataNumber1: number;
-    data2: string;
-    dataNumber2: number;
-    data3: string;
-    dataNumber3: number;
-    data4: string;
-    dataNumber4: number;
-  };
-}
 
 export default function AboutLanding({ sdata }: SelfData) {
   return (

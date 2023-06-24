@@ -1,5 +1,6 @@
 import gqlclient from "@/gql/client";
 import { categoryItems } from "@/gql/queries";
+import { PortfolioProps } from "@/interface-file";
 import PortfolioGallery from "@/modules/portfolio/portfolio-gallery";
 import PortfolioOptions from "@/modules/portfolio/portfolio-options";
 import { GetStaticProps } from "next";
@@ -13,27 +14,13 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-interface PortfolioProps {
-  data: {
-    title: string;
-    bannerImage: {
-      url: string;
-    };
-    heading: string;
-    subHeading: string;
-    galleryCollection: {
-      items: {
-        url: string;
-      }[];
-    };
-  }[];
-}
-
 export default function Portfolio({ data }: PortfolioProps) {
   useEffect(() => {
     document.querySelector("header")?.classList.add("with-bg");
+    document.querySelector(".footer")?.classList.add("with-bg");
     return () => {
       document.querySelector("header")?.classList.remove("with-bg");
+      document.querySelector(".footer")?.classList.remove("with-bg");
     };
   }, []);
 
@@ -55,7 +42,7 @@ export default function Portfolio({ data }: PortfolioProps) {
         <div className="galleries-container" ref={compRef}>
           {data.map((item, ind) => {
             return (
-              <div className="galleries-container" key={ind}>
+              <div className="galleries" key={ind}>
                 <PortfolioGallery
                   images={item.galleryCollection.items.map((item, ind) => ({
                     src: item.url,

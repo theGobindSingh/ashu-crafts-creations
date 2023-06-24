@@ -1,6 +1,7 @@
+import { SelfData } from "@/interface-file";
 import Image from "next/image";
 
-export default function AboutLanding() {
+export default function AboutLanding({ sdata }: SelfData) {
   return (
     <div className="about-landing">
       <Image
@@ -11,33 +12,25 @@ export default function AboutLanding() {
       />
       <div className="about-landing-text">
         <div className="text1">
-          <h3>2+</h3>
-          <span>Active years</span>
+          <h3>{sdata.dataNumber1}+</h3>
+          <span>{sdata.data1}</span>
         </div>
         <div className="text2">
-          <h3>150+</h3>
-          <span>Content customers</span>
+          <h3>{sdata.dataNumber2}+</h3>
+          <span>{sdata.data2}</span>
         </div>
         <div className="text3">
-          <h3>200+</h3>
-          <span>Unique commissions</span>
+          <h3>{sdata.dataNumber3}+</h3>
+          <span>{sdata.data3}</span>
         </div>
         <div className="text4">
-          <h3>50+</h3>
-          <span>Hampers</span>
+          <h3>{sdata.dataNumber4}+</h3>
+          <span>{sdata.data4}</span>
         </div>
       </div>
       <div className="about-landing-prose">
         <h3>/ About</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p>{sdata.aboutUs}</p>
         <span>Ashu</span>
       </div>
     </div>

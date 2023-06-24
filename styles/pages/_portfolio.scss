@@ -1,5 +1,5 @@
 #portfolio {
-  height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height) - var(--footer-height));
   width: 100%;
   display: flex;
   background-color: var(--primary-colour);
@@ -16,5 +16,8 @@
   }
   @media only screen and (max-width: 900px) {
     flex-direction: column;
+    .galleries-container-wrapper {
+      width: 100%;
+    }
   }
 }

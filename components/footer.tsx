@@ -5,20 +5,18 @@ import Flag from "./flag";
 export default function Footer() {
   return (
     <footer className="footer">
-      <p>
-        <span>Made with</span>
+      <Link
+        href="https://www.hymnsofweb.com/"
+        rel="noreferrer noopener"
+        target="_blank"
+        className="foot-link"
+      >
+        <span className="foot-s1 txt">Made with</span>
         <Heart />
-        <span>from</span>
+        <span className="foot-s2 txt">from</span>
         <Flag />
-        <span>by</span>
-        <Link
-          href="https://www.hymnsofweb.com/"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          Hymns of Web
-        </Link>
-      </p>
+        <span className="foot-s3 txt">by Hymns of Web</span>
+      </Link>
     </footer>
   );
 }

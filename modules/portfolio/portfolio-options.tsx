@@ -1,5 +1,5 @@
 import { RefObject, useRef } from "react";
-import StartIcon from "@mui/icons-material/Start";
+import { MdStart as StartIcon } from "react-icons/md";
 import Image from "next/image";
 
 export default function PortfolioOptions({

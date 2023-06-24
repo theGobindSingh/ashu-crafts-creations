@@ -10,7 +10,6 @@ const contactHandler: NextApiHandler = async (req, res) => {
         res.status(404).json({});
         return;
       }
-      console.log(data);
     };
     try {
       const formData: FormDataType = req.body;

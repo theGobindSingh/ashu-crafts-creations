@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export default function Remark() {
   console.log("Made by");
   console.log(`   

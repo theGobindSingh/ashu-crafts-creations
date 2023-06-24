@@ -121,3 +121,8 @@ export interface ServiceTypes {
     subHeading: string;
   }[];
 }
+
+export interface FormDataType {
+  subject: string;
+  text: string;
+}

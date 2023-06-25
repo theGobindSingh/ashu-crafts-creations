@@ -12,7 +12,20 @@ export default function PortfolioGallery({
         {images.map((img, ind) => {
           return (
             <div className={`img-container _${ind + 1}`} key={ind}>
-              <Image src={img.src} alt={img.alt} fill sizes="100%"></Image>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="100%"
+                className="img-cover"
+              ></Image>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="100%"
+                className="img-contain"
+              ></Image>
             </div>
           );
         })}

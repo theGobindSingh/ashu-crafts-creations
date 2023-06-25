@@ -1,10 +1,10 @@
+import Image from "next/image";
+import { GetStaticProps } from "next";
 import { companyName } from "@/common-data";
 import gqlclient from "@/gql/client";
 import { homePageItems } from "@/gql/queries";
 import Gallery from "@/modules/home/gallery";
 import Landing from "@/modules/home/landing";
-import { GetStaticProps } from "next";
-import Image from "next/image";
 import { HomePageProps } from "@/interface-file";
 
 export const getStaticProps: GetStaticProps = async () => {

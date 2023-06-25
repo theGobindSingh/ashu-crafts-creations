@@ -30,7 +30,6 @@ Message: ${targets[3].value}`;
         });
     } else {
       alert("Sorry, processing your request requires your consent");
-      console.log("Eh, your loss");
     }
   };
 

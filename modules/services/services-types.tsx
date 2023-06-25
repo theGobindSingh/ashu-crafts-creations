@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { phoneNumber } from "@/common-data";
 import { Types } from "@/interface-file";
-import Link from "next/link";
 
 export default function ServicesTypes({ tdata }: Types) {
   const message = tdata[0].whatsappText;

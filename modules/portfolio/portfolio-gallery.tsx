@@ -1,5 +1,5 @@
-import { PortfolioGalleryProps } from "@/interface-file";
 import Image from "next/image";
+import { PortfolioGalleryProps } from "@/interface-file";
 
 export default function PortfolioGallery({
   images,

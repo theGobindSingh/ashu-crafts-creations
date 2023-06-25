@@ -1,10 +1,10 @@
+import { useEffect } from "react";
+import { GetStaticProps } from "next";
 import gqlclient from "@/gql/client";
 import { aboutServiceProcessItems, aboutServiceTypeItems } from "@/gql/queries";
 import { ServiceTypes } from "@/interface-file";
 import ServiceProcess from "@/modules/services/service-process";
 import ServicesTypes from "@/modules/services/services-types";
-import { GetStaticProps } from "next";
-import { useEffect } from "react";
 
 export const getStaticProps: GetStaticProps = async () => {
   const aboutServiceTypeData: any = await gqlclient.request(

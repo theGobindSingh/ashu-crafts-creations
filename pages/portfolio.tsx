@@ -1,10 +1,10 @@
+import { useEffect, useRef } from "react";
+import { GetStaticProps } from "next";
 import gqlclient from "@/gql/client";
 import { categoryItems } from "@/gql/queries";
 import { PortfolioProps } from "@/interface-file";
 import PortfolioGallery from "@/modules/portfolio/portfolio-gallery";
 import PortfolioOptions from "@/modules/portfolio/portfolio-options";
-import { GetStaticProps } from "next";
-import { useEffect, useRef } from "react";
 
 export const getStaticProps: GetStaticProps = async () => {
   const categoryData: any = await gqlclient.request(categoryItems);

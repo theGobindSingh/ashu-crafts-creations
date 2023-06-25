@@ -1,11 +1,10 @@
+import type { NextApiHandler } from "next";
 import nodemailerClient from "@/clients/nodemailer-client";
 import { FormDataType } from "@/interface-file";
-import type { NextApiHandler } from "next";
-import type { SentMessageInfo } from "nodemailer";
 
 const contactHandler: NextApiHandler = async (req, res) => {
   if (req.method === "POST" && req.body?.subject) {
-    const mailCallback = (err: Error | null, data: SentMessageInfo) => {
+    const mailCallback = (err: Error | null) => {
       if (err) {
         res.status(404).json({});
         return;

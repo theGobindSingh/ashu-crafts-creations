@@ -1,5 +1,5 @@
-import { SelfData } from "@/interface-file";
 import Image from "next/image";
+import { SelfData } from "@/interface-file";
 
 export default function AboutLanding({ sdata }: SelfData) {
   return (

@@ -1,5 +1,5 @@
-import ContactUsBox from "@/modules/contact-us/contact-us-box";
 import Image from "next/image";
+import ContactUsBox from "@/modules/contact-us/contact-us-box";
 
 export default function ContactUs() {
   return (

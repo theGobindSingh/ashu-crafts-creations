@@ -1,10 +1,10 @@
+import React, { useEffect } from "react";
+import { GetStaticProps } from "next";
 import gqlclient from "@/gql/client";
 import { aboutArtistItems, aboutTestimonialItems } from "@/gql/queries";
 import { AboutArtistProps } from "@/interface-file";
 import AboutLanding from "@/modules/about/about-landing";
 import AboutTestimonial from "@/modules/about/about-testimonial";
-import { GetStaticProps } from "next";
-import React, { useEffect } from "react";
 
 export const getStaticProps: GetStaticProps = async () => {
   const aboutArtistData: any = await gqlclient.request(aboutArtistItems);

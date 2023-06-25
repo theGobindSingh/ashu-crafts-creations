@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
-export default function Remark() {
+export default function useRemark() {
+  console.clear();
   console.log("Made by");
   console.log(`   
     ___    __    __              
@@ -37,5 +38,4 @@ export default function Remark() {
      \\/  \\/ \\___|_.__/ 
                        
                        `);
-  return <div></div>;
 }

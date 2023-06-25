@@ -1,13 +1,13 @@
-import { message, phoneNumber } from "@/common-data";
-import Slider from "@/components/slider";
-import { TestData } from "@/interface-file";
+import { useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   MdOutlineKeyboardDoubleArrowDown,
   MdOutlineKeyboardDoubleArrowUp,
 } from "react-icons/md";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { message, phoneNumber } from "@/common-data";
+import Slider from "@/components/slider";
+import { TestData } from "@/interface-file";
 
 export default function AboutTestimonial({ tdata }: TestData) {
   const btn1 = useRef<any>(null);

@@ -2,7 +2,9 @@ import { useEffect, useRef, Children, useCallback } from "react";
 import type { PropsWithChildren, MutableRefObject, CSSProperties } from "react";
 
 interface SliderProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   prevBtnRef: MutableRefObject<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   nextBtnRef: MutableRefObject<any>;
   breakpoints: {
     min: number;
@@ -28,7 +30,7 @@ export default function Slider(props: PropsWithChildren<SliderProps>) {
   const showItems = useRef<number>(0);
   const totalItems = useRef<number>(Children.count(children));
 
-  function sliderLogic() {
+  const sliderLogic = useCallback(() => {
     const wrapperHeight = Math.round(
       sliderWrapperRef.current?.offsetHeight ?? 0
     );
@@ -38,51 +40,7 @@ export default function Slider(props: PropsWithChildren<SliderProps>) {
       sliderContainerRef.current.style.height = containerHeight + "px";
       sliderContainerRef.current.style.gridTemplateRows = `repeat(${totalItems.current}, ${singleHeight.current}px)`;
     }
-  }
-
-  function resizePartialLogic() {
-    for (let i = 0; i < breakpoints.length; i++) {
-      if (
-        (breakpoints[i]?.min ?? 999999) < document.body.clientWidth &&
-        (breakpoints[i]?.max ?? -1) > document.body.clientWidth
-      ) {
-        showItems.current = breakpoints[i]?.items ?? 0;
-        break;
-      }
-    }
-    if (sliderContainerRef.current !== null) {
-      sliderContainerRef.current.style.top = "0px";
-    }
-  }
-
-  function resizeLogic() {
-    resizePartialLogic();
-    sliderLogic();
-  }
-
-  useEffect(() => {
-    try {
-      prevBtnRef.current.addEventListener("click", upClickHandler);
-      nextBtnRef.current.addEventListener("click", downClickHandler);
-    } catch {
-      alert("Something went wrong with button refs");
-    }
-    resizePartialLogic();
-    window.addEventListener("resize", resizeLogic);
-    return () => {
-      window.removeEventListener("resize", resizeLogic);
-      try {
-        prevBtnRef.current.removeEventListener("click", upClickHandler);
-        nextBtnRef.current.removeEventListener("click", downClickHandler);
-      } catch {
-        //
-      }
-    };
   }, []);
-
-  useEffect(() => {
-    sliderLogic();
-  }, [sliderWrapperRef, sliderContainerRef, showItems.current, totalItems]);
 
   const upClickHandler = useCallback(() => {
     const top = Number(
@@ -95,7 +53,7 @@ export default function Slider(props: PropsWithChildren<SliderProps>) {
     ) {
       sliderContainerRef.current.style.top = top + singleHeight.current + "px";
     }
-  }, [sliderContainerRef, singleHeight, showItems.current, totalItems]);
+  }, [sliderContainerRef, singleHeight, showItems, totalItems]);
 
   const downClickHandler = useCallback(() => {
     const top = Number(
@@ -108,7 +66,66 @@ export default function Slider(props: PropsWithChildren<SliderProps>) {
     ) {
       sliderContainerRef.current.style.top = top - singleHeight.current + "px";
     }
-  }, [sliderContainerRef, singleHeight, showItems.current, totalItems]);
+  }, [sliderContainerRef, singleHeight, showItems, totalItems]);
+
+  const resizePartialLogic = useCallback(() => {
+    for (let i = 0; i < breakpoints.length; i++) {
+      if (
+        (breakpoints[i]?.min ?? 999999) < document.body.clientWidth &&
+        (breakpoints[i]?.max ?? -1) > document.body.clientWidth
+      ) {
+        showItems.current = breakpoints[i]?.items ?? 0;
+        break;
+      }
+    }
+    if (sliderContainerRef.current !== null) {
+      sliderContainerRef.current.style.top = "0px";
+    }
+  }, [breakpoints]);
+
+  const resizeLogic = useCallback(() => {
+    resizePartialLogic();
+    sliderLogic();
+  }, [resizePartialLogic, sliderLogic]);
+
+  useEffect(() => {
+    const prevBtn = prevBtnRef.current;
+    const nextBtn = nextBtnRef.current;
+    try {
+      prevBtn.addEventListener("click", upClickHandler);
+      nextBtn.addEventListener("click", downClickHandler);
+    } catch {
+      //
+    }
+    resizePartialLogic();
+    window.addEventListener("resize", resizeLogic);
+    return () => {
+      window.removeEventListener("resize", resizeLogic);
+      try {
+        prevBtn.removeEventListener("click", upClickHandler);
+        nextBtn.removeEventListener("click", downClickHandler);
+      } catch {
+        //
+      }
+    };
+  }, [
+    prevBtnRef,
+    nextBtnRef,
+    resizeLogic,
+    upClickHandler,
+    downClickHandler,
+    resizePartialLogic,
+  ]);
+
+  useEffect(() => {
+    sliderLogic();
+  }, [
+    sliderWrapperRef,
+    sliderContainerRef,
+    showItems,
+    totalItems,
+    sliderLogic,
+  ]);
 
   return (
     <div

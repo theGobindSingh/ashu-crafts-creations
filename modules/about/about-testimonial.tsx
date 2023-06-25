@@ -10,23 +10,16 @@ import Slider from "@/components/slider";
 import { TestData } from "@/interface-file";
 
 export default function AboutTestimonial({ tdata }: TestData) {
-  const btn1 = useRef<any>(null);
-  const btn2 = useRef<any>(null);
-
-  const aboutTestiRef = useRef<any>(null);
-
-  useEffect(() => {
-    const arrowUp = aboutTestiRef.current?.querySelector(".arroup");
-    const arrowDown = aboutTestiRef.current?.querySelector(".arrodown");
-    btn1.current = arrowUp;
-    btn2.current = arrowDown;
-  }, []);
+  const btn1 = useRef<HTMLDivElement>(null);
+  const btn2 = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="about-testimonial" ref={aboutTestiRef}>
+    <div className="about-testimonial">
       <h2>/ People say</h2>
       <div className="feedback-section">
-        <MdOutlineKeyboardDoubleArrowUp className="arroup" />
+        <div className="arroup" ref={btn1}>
+          <MdOutlineKeyboardDoubleArrowUp />
+        </div>
         <Slider
           breakpoints={[
             {
@@ -57,7 +50,9 @@ export default function AboutTestimonial({ tdata }: TestData) {
             );
           })}
         </Slider>
-        <MdOutlineKeyboardDoubleArrowDown className="arrodown" />
+        <div className="arrodown" ref={btn2}>
+          <MdOutlineKeyboardDoubleArrowDown />
+        </div>
       </div>
       <Link href={`https://wa.me/${phoneNumber}?text=${message}`}>Hire us</Link>
     </div>

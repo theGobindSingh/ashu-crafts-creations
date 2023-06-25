@@ -46,8 +46,12 @@
         background: none;
         border: none;
         color: white;
+
         svg {
-          font-size: 0;
+          font-size: 2rem;
+          height: 20px;
+          width: 20px;
+          margin-right: 5px;
         }
       }
       .img-container {
@@ -70,44 +74,6 @@
           bottom: -12.5%;
           right: -20px;
           opacity: 0;
-        }
-      }
-    }
-  }
-  @media only screen and (min-width: 900px) {
-    .suboptions {
-      .option-container {
-        &:hover {
-          .span-container {
-            span {
-              margin-left: 5%;
-            }
-            svg {
-              font-size: 1.4rem;
-            }
-          }
-          .img-container {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 15vw;
-            width: 15vw;
-            img {
-              height: 100%;
-              width: 100%;
-            }
-            position: relative;
-            &::after {
-              width: 80px;
-              height: 80px;
-              z-index: 1;
-              bottom: -20px;
-              right: -20px;
-              opacity: 0.7;
-            }
-          }
         }
       }
     }
@@ -138,6 +104,17 @@
             font-size: inherit;
           }
         }
+      }
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .suboptions {
+      padding: 0;
+      flex-direction: column;
+      grid-template-columns: 1fr;
+      margin-right: 0;
+      .option-container {
+        flex-direction: column;
       }
     }
   }

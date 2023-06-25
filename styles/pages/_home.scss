@@ -15,5 +15,6 @@
   @import "../modules/home/gallery";
   @media only screen and (max-width: 900px) {
     flex-direction: column;
+    height: fit-content;
   }
 }

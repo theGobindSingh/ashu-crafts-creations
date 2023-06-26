@@ -3,12 +3,15 @@ import nodemailerClient from "@/clients/nodemailer-client";
 import { FormDataType } from "@/interface-file";
 
 const contactHandler: NextApiHandler = async (req, res) => {
+  let isSuccess = false;
+  let failCode = 405;
   if (req.method === "POST" && req.body?.subject) {
     const mailCallback = (err: Error | null) => {
       if (err) {
-        res.status(404).json({});
+        failCode = 404;
         return;
       }
+      isSuccess = true;
     };
     try {
       const formData: FormDataType = req.body;
@@ -18,15 +21,21 @@ const contactHandler: NextApiHandler = async (req, res) => {
         subject: formData.subject,
         text: formData.text,
       };
-      await nodemailerClient.sendMail(mailOptions, mailCallback);
-      res.status(200).json({});
+      nodemailerClient.sendMail(mailOptions, mailCallback);
+      isSuccess = true;
     } catch {
-      res.status(500).json({});
+      failCode = 500;
     }
   } else {
-    res.status(405).json({});
+    failCode = 405;
   }
-  res.status(404).json({});
+  failCode = 404;
+  if (isSuccess) {
+    res.status(200).json({});
+    return;
+  } else {
+    res.status(failCode).json({});
+  }
 };
 
 export default contactHandler;

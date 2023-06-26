@@ -1,18 +1,24 @@
 import type { NextApiHandler } from "next";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import nodemailerClient from "@/clients/nodemailer-client";
 import { FormDataType } from "@/interface-file";
 
 const contactHandler: NextApiHandler = async (req, res) => {
   let isSuccess = false;
   let failCode = 405;
-  if (req.method === "POST" && req.body?.subject) {
-    const mailCallback = (err: Error | null) => {
-      if (err) {
+  const verificationPromise = new Promise((resolve, reject) => {
+    nodemailerClient.verify(function (error, success) {
+      if (error) {
         failCode = 404;
-        return;
+        reject(error);
+      } else {
+        isSuccess = true;
+        resolve(success);
       }
-      isSuccess = true;
-    };
+    });
+  });
+  await verificationPromise;
+  if (req.method === "POST" && req.body?.subject) {
     try {
       const formData: FormDataType = req.body;
       const mailOptions = {
@@ -21,8 +27,23 @@ const contactHandler: NextApiHandler = async (req, res) => {
         subject: formData.subject,
         text: formData.text,
       };
-      nodemailerClient.sendMail(mailOptions, mailCallback);
-      isSuccess = true;
+      const sendMailPromise = new Promise((resolve, reject) => {
+        const mailCallback = (
+          err: Error | null,
+          info: SMTPTransport.SentMessageInfo
+        ) => {
+          if (err) {
+            failCode = 404;
+            reject(err);
+            return;
+          } else {
+            isSuccess = true;
+            resolve(info);
+          }
+        };
+        nodemailerClient.sendMail(mailOptions, mailCallback);
+      });
+      await sendMailPromise;
     } catch {
       failCode = 500;
     }
